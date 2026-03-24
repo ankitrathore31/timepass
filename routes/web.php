@@ -26,7 +26,7 @@ Route::post('/logout', [AuthController::class, 'logout'])
 // ── Authenticated routes ───────────────────────────────────────
 Route::middleware('auth')->group(function () {
 
-    Route::get('/',          [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/user-dashboard',          [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/dashboard', [DashboardController::class, 'index']);
 
     // Games
