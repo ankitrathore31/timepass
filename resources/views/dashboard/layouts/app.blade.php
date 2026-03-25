@@ -6,7 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'TimePass') – Play. Connect. Earn.</title>
+    <link rel="shortcut icon" href="{{asset('images/logo.jpeg')}}" type="image/x-icon">
+    <title>@yield('title', 'TimePass')TimePass- Play. Connect. Earn.</title>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap"
         rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -309,7 +310,7 @@
             <span>Home</span>
         </a>
 
-        <a href="{{-- route('videos.index') --}}" class="bnav-item ">
+        <a href="{{ route('reels.index') }}" class="bnav-item ">
 
             <div class="icon-wrap">
                 <i class="fas fa-play"></i>

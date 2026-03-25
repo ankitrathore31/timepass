@@ -14,9 +14,18 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
     protected $fillable = [
-        'name', 'username', 'email', 'password',
-        'avatar', 'coins', 'level', 'xp',
-        'streak_days', 'last_login_date', 'city', 'role',
+        'name',
+        'username',
+        'email',
+        'password',
+        'avatar',
+        'coins',
+        'level',
+        'xp',
+        'streak_days',
+        'last_login_date',
+        'city',
+        'role',
     ];
 
     protected $hidden = ['password', 'remember_token'];
@@ -141,5 +150,58 @@ class User extends Authenticatable
     public function isAdmin(): bool
     {
         return $this->role === 'admin';
+    }
+
+    public function reels()
+    {
+        return $this->hasMany(Reel::class)->latest();
+    }
+
+    public function followers()
+    {
+        // users who follow $this user
+        return $this->belongsToMany(User::class, 'follows', 'following_id', 'follower_id')
+            ->wherePivot('status', 'accepted')
+            ->withTimestamps();
+    }
+
+    public function following()
+    {
+        // users that $this user follows
+        return $this->belongsToMany(User::class, 'follows', 'follower_id', 'following_id')
+            ->wherePivot('status', 'accepted')
+            ->withTimestamps();
+    }
+
+    public function notifications_feed()
+    {
+        return $this->hasMany(UserNotification::class)->latest();
+    }
+
+    public function isFollowing(User $user): bool
+    {
+        return $this->following()->where('users.id', $user->id)->exists();
+    }
+
+    public function followStatus(User $user): ?string
+    {
+        $follow = Follow::where('follower_id', $this->id)
+            ->where('following_id', $user->id)
+            ->first();
+        return $follow?->status;
+    }
+
+    // Helper: fire a notification
+    public static function notify(int $recipientId, int $actorId, string $type, string $body, $notifiable = null): void
+    {
+        if ($recipientId === $actorId) return; // don't notify yourself
+        UserNotification::create([
+            'user_id'          => $recipientId,
+            'actor_id'         => $actorId,
+            'type'             => $type,
+            'body'             => $body,
+            'notifiable_type'  => $notifiable ? get_class($notifiable) : null,
+            'notifiable_id'    => $notifiable?->id,
+        ]);
     }
 }

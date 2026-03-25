@@ -4,11 +4,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TimePass – Play. Connect. Earn.</title>
-    <link rel="shortcut icon" href="{{asset('images/logo.jpeg')}}" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap"
+
+    <!-- Primary SEO -->
+    <title>TimePass – Play Games, Upload Reels, Earn Cashback & Rewards</title>
+    <meta name="description"
+        content="TimePass is a fun social gaming platform where you can play games, upload reels & memes, chat with friends, and earn real cashback via UPI.">
+    <meta name="keywords"
+        content="play games earn money, reels upload app, meme sharing platform, social gaming India, earn cashback UPI, online games India">
+    <meta name="author" content="TimePass">
+
+    <!-- Robots -->
+    <meta name="robots" content="index, follow">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="{{ url()->current() }}">
+
+    <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+    <meta property="og:title" content="TimePass – Play. Connect. Earn.">
+    <meta property="og:description"
+        content="Play games, upload reels & memes, chat, and earn cashback instantly via UPI.">
+    <meta property="og:image" content="{{ asset('images/logo.jpeg') }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter SEO -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TimePass – Play. Connect. Earn.">
+    <meta name="twitter:description"
+        content="Join TimePass to play games, upload reels & memes, and earn cashback rewards.">
+    <meta name="twitter:image" content="{{ asset('images/logo.jpeg') }}">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ asset('images/logo.jpeg') }}" type="image/x-icon">
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap"
         rel="stylesheet">
+
+    <!-- Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Theme Color (Mobile Chrome UI) -->
+    <meta name="theme-color" content="#ff6b00">
+
+    <!-- Structured Data (JSON-LD for Google) -->
+    {{-- <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "TimePass",
+      "url": "{{ url('/') }}",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "{{ url('/') }}/search?q=@{{search_term_string}}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script> --}}
     <style>
         :root {
             --p1: #FF6B6B;
@@ -1169,7 +1222,8 @@
                     <div class="feat-card reveal" style="--c1:#10B981;--c2:#4ECDC4;" tabindex="0">
                         <div class="feat-icon">🔥</div>
                         <div class="feat-text">Daily Streaks</div>
-                        <div class="feat-sub">Keep your streak alive to unlock bonus points and exclusive content.</div>
+                        <div class="feat-sub">Keep your streak alive to unlock bonus points and exclusive content.
+                        </div>
                     </div>
                     <div class="feat-card reveal" style="--c1:#EC4899;--c2:#A855F7;" tabindex="0">
                         <div class="feat-icon">🌟</div>
@@ -1544,11 +1598,7 @@
             <div class="ico">🎮</div>
             <span>Games</span>
         </a>
-        {{-- <a href="#social" style="position:relative;">
-            <div class="ico">💬</div>
-            <span>Social</span>
-            <div class="dot-badge"></div>
-        </a> --}}
+
         <a href="#rewards" style="position:relative;">
             <div class="ico">🏆</div>
             <span>Rewards</span>

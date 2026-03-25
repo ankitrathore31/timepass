@@ -30,3 +30,5 @@ class Game extends Model
         return "linear-gradient(135deg, {$this->color_from}, {$this->color_to})";
     }
 }
+
+
